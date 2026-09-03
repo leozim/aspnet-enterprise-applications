@@ -1,0 +1,13 @@
+﻿services:
+  nse.webapp.mvc:
+    image: nse.webapp.mvc
+    build:
+      context: .
+      dockerfile: src/web/NSE.WebApp.MVC/Dockerfile
+
+  nse.webapp.mvc-1:
+    image: nse.webapp.mvc-1
+    build:
+      context: .
+      dockerfile: src/web/NSE.WebApp.MVC/Dockerfile
+
