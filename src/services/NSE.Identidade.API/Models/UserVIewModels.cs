@@ -10,10 +10,10 @@ namespace NSE.Identidade.API.Models
         
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(100, ErrorMessage = "O campo {0} deve ter tamanho entre {2} e {1} caracteres", MinimumLength = 6)]
-        public string Senha { get; private set; }
+        public string Senha { get; set; }
         
         [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
-        public string SenhaConfirmacao { get; private set; }
+        public string SenhaConfirmacao { get; set; }
     }
 
     public class UsuarioLogin
@@ -24,6 +24,6 @@ namespace NSE.Identidade.API.Models
         
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(100, ErrorMessage = "O campo {0} deve ter tamanho entre {2} e {1} caracteres", MinimumLength = 6)]
-        public string Senha { get; private set; }
+        public string Senha { get; set; }
     }
 }
