@@ -46,7 +46,7 @@ namespace NSE.Identidade.API
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("x")),
                     ValidateIssuer = true,
-                    ValidateAudience = true,,
+                    ValidateAudience = true,
                     ValidAudience = "x",
                     ValidIssuer = "x"
                 };
