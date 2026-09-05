@@ -16,7 +16,8 @@ namespace NSE.Identidade.API.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-
+        
+        [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistro usuarioRegistro)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -38,7 +39,8 @@ namespace NSE.Identidade.API.Controllers
 
             return BadRequest();
         }
-
+        
+        [HttpPost("autenticar")]
         public async Task<ActionResult> Login(UsuarioLogin usuarioLogin)
         {
             if (!ModelState.IsValid) return BadRequest();
