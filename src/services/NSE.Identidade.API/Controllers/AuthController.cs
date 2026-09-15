@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NSE.Identidade.API.Extensions;
 using NSE.Identidade.API.Models;
@@ -21,11 +22,12 @@ namespace NSE.Identidade.API.Controllers
         private readonly AppSettings _appSettings;
 
         public AuthController(SignInManager<IdentityUser> signInManager, 
-                              UserManager<IdentityUser> userManager, AppSettings appSettings)
+                              UserManager<IdentityUser> userManager, 
+                              IOptions<AppSettings> appSettings)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _appSettings = appSettings;
+            _appSettings = appSettings.Value;
         }
         
         [HttpPost("nova-conta")]
