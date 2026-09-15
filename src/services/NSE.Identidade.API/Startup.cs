@@ -32,12 +32,14 @@ namespace NSE.Identidade.API
             {
                 builder.AddUserSecrets<Startup>();
             }
+            
+            Configuration = builder.Build();
         }
 
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AdIdentityConfig(Configuration);
+            services.AddIdentityConfiguration(Configuration);
             // JWT END
             services.AddApiConfiguration();
 
@@ -48,6 +50,7 @@ namespace NSE.Identidade.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwaggerConfiguration();
+            
             app.UseApiConfiguration(env);
         }
     }
