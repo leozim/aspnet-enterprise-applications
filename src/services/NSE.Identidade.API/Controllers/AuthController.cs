@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NSE.Identidade.API.Extensions;
 using NSE.Identidade.API.Models;
 
 namespace NSE.Identidade.API.Controllers
@@ -10,12 +11,14 @@ namespace NSE.Identidade.API.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly AppSettings _appSettings;
 
         public AuthController(SignInManager<IdentityUser> signInManager, 
-                              UserManager<IdentityUser> userManager)
+                              UserManager<IdentityUser> userManager, AppSettings appSettings)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _appSettings = appSettings;
         }
         
         [HttpPost("nova-conta")]
@@ -55,5 +58,7 @@ namespace NSE.Identidade.API.Controllers
             
             return BadRequest();
         }
+        
+        
     }
 }
