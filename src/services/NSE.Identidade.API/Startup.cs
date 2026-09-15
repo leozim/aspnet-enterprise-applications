@@ -40,28 +40,14 @@ namespace NSE.Identidade.API
             services.AdIdentityConfig(Configuration);
             // JWT END
             services.AddApiConfiguration();
-            
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "NerdStore Enterprise Identity API",
-                    Description = "Esta API faz parte do curso ASP.NET Core Enterprise Applications.",
-                    Contact = new OpenApiContact() { Name = "Leonardo Mariz", Email = "leonardomariz@alu.ufc.br"},
-                    License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT")}
-                });
-            });
+
+            services.AddSwaggerConfig();
 
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            });
-
+            app.UseSwaggerConfiguration();
             app.UseApiConfiguration(env);
         }
     }
