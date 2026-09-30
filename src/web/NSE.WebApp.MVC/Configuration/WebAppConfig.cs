@@ -13,7 +13,7 @@ namespace NSE.WebApp.MVC.Configuration
             
         }
 
-        public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static void UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -30,6 +30,8 @@ namespace NSE.WebApp.MVC.Configuration
             app.UseStaticFiles();
 
             app.UseRouting();
+            
+            app.UseIdentityConfiguration();
             
             app.UseEndpoints(endpoints =>
             {
