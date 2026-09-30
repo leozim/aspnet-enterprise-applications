@@ -18,7 +18,15 @@ namespace NSE.WebApp.MVC.Controllers
         [Route("nova-conta")]
         public async Task<IActionResult> Registro(UsuarioRegistro usuarioRegistro)
         {
+            if (!ModelState.IsValid) return View(usuarioRegistro);
             
+            // API - registro
+            
+            if (false) return View(usuarioRegistro);
+            
+            // Realizar login na API
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -30,16 +38,24 @@ namespace NSE.WebApp.MVC.Controllers
 
         [HttpPost]
         [Route("login")]
-        public Task<IActionResult> Login(UsuarioLogin usuarioLogin)
+        public async Task<IActionResult> Login(UsuarioLogin usuarioLogin)
         {
+            if (!ModelState.IsValid) return View(usuarioLogin);
             
+            // API - Login
+
+            if (false) return View(usuarioLogin);
+            
+            // Realizar login na APP
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         [Route("sair")]
         public async Task<IActionResult> Logout()
         {
-            
+            return RedirectToAction("Index", "Home");
         }
         
     }
