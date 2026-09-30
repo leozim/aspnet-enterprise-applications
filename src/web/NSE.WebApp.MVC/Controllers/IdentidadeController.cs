@@ -37,9 +37,10 @@ namespace NSE.WebApp.MVC.Controllers
             // API - registro
             var response = await _autenticacaoService.Registro(usuarioRegistro);
             
-            if (false) return View(usuarioRegistro);
+            // if (false) return View(usuarioRegistro);
             
             // Realizar login na API
+            await RealizarLogin(response);
 
             return RedirectToAction("Index", "Home");
         }
@@ -60,7 +61,7 @@ namespace NSE.WebApp.MVC.Controllers
             // API - Login
             var response = await _autenticacaoService.Login(usuarioLogin);
 
-            if (false) return View(usuarioLogin);
+            // if (false) return View(usuarioLogin);
             
             // Realizar login na APP
             await RealizarLogin(response);
