@@ -21,10 +21,15 @@ namespace NSE.WebApp.MVC.Services
                 JsonSerializer.Serialize(usuarioLogin),
                 Encoding.UTF8,
                 "application/json");
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
             
             var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/autenticar", loginContent);
 
-            return JsonSerializer.Deserialize<UsuarioRespostaLogin>(await response.Content.ReadAsStringAsync());
+            return JsonSerializer.Deserialize<UsuarioRespostaLogin>(await response.Content.ReadAsStringAsync(), options);
         }
 
         public async Task<UsuarioRespostaLogin> Registro(UsuarioRegistro usuarioRegistro)
@@ -33,10 +38,15 @@ namespace NSE.WebApp.MVC.Services
                 JsonSerializer.Serialize(usuarioRegistro),
                 Encoding.UTF8,
                 "application/json");
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
             
             var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/nova-conta", registroContent);
 
-            return JsonSerializer.Deserialize<UsuarioRespostaLogin>(await response.Content.ReadAsStringAsync());
+            return JsonSerializer.Deserialize<UsuarioRespostaLogin>(await response.Content.ReadAsStringAsync(), options);
         }
     }
 }
