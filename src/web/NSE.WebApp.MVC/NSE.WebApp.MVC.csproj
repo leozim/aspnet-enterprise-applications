@@ -11,8 +11,4 @@
       </Content>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Views\Identidade\" />
-    </ItemGroup>
-
 </Project>
