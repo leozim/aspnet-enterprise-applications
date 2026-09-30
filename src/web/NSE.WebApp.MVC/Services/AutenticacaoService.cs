@@ -1,18 +1,42 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using NSE.WebApp.MVC.Models;
 
 namespace NSE.WebApp.MVC.Services
 {
+    
     public class AutenticacaoService : IAutenticacaoService
     {
+        private readonly HttpClient _httpcliente;
+
+        public AutenticacaoService(HttpClient httpcliente)
+        {
+            _httpcliente = httpcliente;
+        }
         public async Task<string> Login(UsuarioLogin usuarioLogin)
         {
-            throw new System.NotImplementedException();
+            var loginContent = new StringContent(
+                JsonSerializer.Serialize(usuarioLogin),
+                Encoding.UTF8,
+                "application/json");
+            
+            var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/autenticar", loginContent);
+
+            return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<string> Registro(UsuarioLogin usuarioLogin)
+        public async Task<string> Registro(UsuarioRegistro usuarioRegistro)
         {
-            throw new System.NotImplementedException();
+            var registroContent = new StringContent(
+                JsonSerializer.Serialize(usuarioRegistro),
+                Encoding.UTF8,
+                "application/json");
+            
+            var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/nova-conta", registroContent);
+
+            return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
     }
 }
