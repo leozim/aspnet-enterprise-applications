@@ -12,7 +12,7 @@ using NSE.WebApp.MVC.Services;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class IdentidadeController : Controller
+    public class IdentidadeController : MainController
     {
         private readonly IAutenticacaoService _autenticacaoService;
 
@@ -34,12 +34,10 @@ namespace NSE.WebApp.MVC.Controllers
         {
             if (!ModelState.IsValid) return View(usuarioRegistro);
             
-            // API - registro
             var response = await _autenticacaoService.Registro(usuarioRegistro);
             
-            // if (false) return View(usuarioRegistro);
+            if (ResponsePossuiErros(response.ResponseResult)) return View(usuarioRegistro);
             
-            // Realizar login na API
             await RealizarLogin(response);
 
             return RedirectToAction("Index", "Home");
@@ -58,12 +56,10 @@ namespace NSE.WebApp.MVC.Controllers
         {
             if (!ModelState.IsValid) return View(usuarioLogin);
             
-            // API - Login
             var response = await _autenticacaoService.Login(usuarioLogin);
 
-            // if (false) return View(usuarioLogin);
+            if (ResponsePossuiErros(response.ResponseResult)) return View(usuarioLogin);
             
-            // Realizar login na APP
             await RealizarLogin(response);
 
             return RedirectToAction("Index", "Home");
