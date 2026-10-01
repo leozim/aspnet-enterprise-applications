@@ -21,7 +21,7 @@ namespace NSE.WebApp.MVC.Extensions
             return EstaAutenticado() ? Guid.Parse(_accessor.HttpContext.User.GetUserId()) : Guid.Empty;
         }
 
-        public string ObterYserEmail()
+        public string ObterUserEmail()
         {
             return EstaAutenticado() ? _accessor.HttpContext.User.GetUserEmail() : "";
         }

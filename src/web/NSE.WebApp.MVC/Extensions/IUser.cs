@@ -10,7 +10,7 @@ namespace NSE.WebApp.MVC.Extensions
     {
         string Name { get;  }
         Guid ObterUserId();
-        string ObterYserEmail();
+        string ObterUserEmail();
         string ObterUserToken();
         bool EstaAutenticado();
         bool PossuiRole(string role);
