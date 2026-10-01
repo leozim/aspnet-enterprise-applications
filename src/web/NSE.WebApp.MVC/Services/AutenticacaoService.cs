@@ -47,12 +47,20 @@ namespace NSE.WebApp.MVC.Services
                 Encoding.UTF8,
                 "application/json");
 
+            var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/nova-conta", registroContent);
+            
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
-            
-            var response = await _httpcliente.PostAsync("https://localhost:5002/api/identidade/nova-conta", registroContent);
+
+            if (!TratarErrorsResponse(response))
+            {
+                return new UsuarioRespostaLogin
+                {
+                    ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync())
+                };
+            }
 
             return JsonSerializer.Deserialize<UsuarioRespostaLogin>(await response.Content.ReadAsStringAsync(), options);
         }
