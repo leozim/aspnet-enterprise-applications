@@ -13,15 +13,13 @@ namespace NSE.WebApp.MVC.Services
     public class AutenticacaoService : Services, IAutenticacaoService
     {
         private readonly HttpClient _httpcliente;
-        private readonly AppSettings _settings;
 
         public AutenticacaoService(HttpClient httpcliente, 
                                    IOptions<AppSettings> settings)
         {
-            httpcliente.BaseAddress = new Uri(_settings.AutenticacaoUrl);
+            httpcliente.BaseAddress = new Uri(settings.Value.AutenticacaoUrl);
             
             _httpcliente = httpcliente;
-            _settings = settings.Value;
         }
         public async Task<UsuarioRespostaLogin> Login(UsuarioLogin usuarioLogin)
         {
