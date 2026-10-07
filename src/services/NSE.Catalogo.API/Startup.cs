@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NSE.Catalogo.API.Data;
+using NSE.Catalogo.API.Data.Repository;
+using NSE.Catalogo.API.Models;
 
 namespace NSE.Catalogo.API
 {
@@ -31,6 +33,9 @@ namespace NSE.Catalogo.API
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddControllers();
+
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<CatalogoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
