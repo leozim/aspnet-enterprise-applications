@@ -20,5 +20,24 @@ namespace NSE.Core.DomainObjects
         {
             return (GetType().GetHashCode() * 907) + Id.GetHashCode();
         }
+
+        public static bool operator ==(Entity left, Entity right)
+        {
+            if (ReferenceEquals(left, null) && ReferenceEquals(right, null)) return true;
+            
+            if (ReferenceEquals(left, null) || ReferenceEquals(right, null)) return false;
+            
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Entity left, Entity right)
+        {
+            return !(left == right);
+        }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name} [Id={Id}]";
+        }
     }
 }
