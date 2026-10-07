@@ -9,5 +9,10 @@ namespace NSE.Catalogo.API.Data
             : base(options) { }
 
         public DbSet<Produto> Produtos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
+        }
     }
 }
