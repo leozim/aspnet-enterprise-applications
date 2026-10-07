@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NSE.Catalogo.API.Models;
+using NSE.Core.Data;
 
 namespace NSE.Catalogo.API.Data.Repository
 {
@@ -14,6 +15,8 @@ namespace NSE.Catalogo.API.Data.Repository
         {
             _context = context;
         }
+        
+        public IUnitOfWork UnitofWork => _context;
 
         public async Task<Produto> ObterPorId(Guid id)
         {
