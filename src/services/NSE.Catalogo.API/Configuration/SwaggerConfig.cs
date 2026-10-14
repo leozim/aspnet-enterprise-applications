@@ -25,6 +25,7 @@ namespace NSE.Catalogo.API.Configuration
                     Name = "Authorization",
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
                 

@@ -42,7 +42,10 @@ namespace NSE.WebApi.Core.Identidade
                 return;
             }
 
-            if (!CustomAuthorize.ValidarClaimsUsuario(context.HttpContext, _claim.Type, _claim.Value));
+            if (!CustomAuthorize.ValidarClaimsUsuario(context.HttpContext, _claim.Type, _claim.Value))
+            {
+                context.Result = new StatusCodeResult(403);
+            }
         }
     }
 }
