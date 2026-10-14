@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.WebApi.Core.Identidade;
 
-namespace NSE.Identidade.API.Controllers
+namespace NSE.Identidade.API.Configuration
 {
     public static class ApiConfig
     {

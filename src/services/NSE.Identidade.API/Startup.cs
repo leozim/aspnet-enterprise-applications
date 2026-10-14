@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NSE.Identidade.API.Configuration;
 using NSE.Identidade.API.Controllers;
 using NSE.Identidade.API.Data;
 using NSE.Identidade.API.Extensions;
