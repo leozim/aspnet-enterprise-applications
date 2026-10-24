@@ -22,7 +22,7 @@ namespace NSE.WebApp.MVC.Services
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
-            var response = await _httpClient.GetAsync($"/catalogo/produtors/");
+            var response = await _httpClient.GetAsync("/catalogo/produtos/");
             
             TratarErrorsResponse(response);
 
@@ -31,7 +31,7 @@ namespace NSE.WebApp.MVC.Services
 
         public async Task<ProdutoViewModel> ObterPorId(Guid id)
         {
-            var response = await _httpClient.GetAsync($"/catalogo/produtors/{id}");
+            var response = await _httpClient.GetAsync($"/catalogo/produtos/{id}");
             
             TratarErrorsResponse(response);
 
