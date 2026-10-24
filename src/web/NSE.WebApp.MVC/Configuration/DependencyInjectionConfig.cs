@@ -10,10 +10,11 @@ namespace NSE.WebApp.MVC.Configuration
         public static void RegisterServices(this IServiceCollection services)
         {
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+
+            services.AddHttpClient<ICatalogoService, CatalogoService>();
             
             // Recomendação da microsoft pq o request por si so ja é único
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
             services.AddScoped<IUser, AspNetUser>();
         }
     }
