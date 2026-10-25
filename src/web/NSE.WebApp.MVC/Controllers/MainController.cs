@@ -4,7 +4,7 @@ using NSE.WebApp.MVC.Models;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class MainController : Controller
+    public class MainController : HomeController
     {
         protected bool ResponsePossuiErros(ResponseResult resposta)
         {
