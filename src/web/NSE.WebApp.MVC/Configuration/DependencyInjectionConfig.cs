@@ -16,15 +16,15 @@ namespace NSE.WebApp.MVC.Configuration
             
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
 
-            // services.AddHttpClient<ICatalogoService, CatalogoService>()
-            //     .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+            services.AddHttpClient<ICatalogoService, CatalogoService>()
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-            services.AddHttpClient("Refit", options =>
+            /*services.AddHttpClient("Refit", options =>
                 {
                     options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
                 })
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
+                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);*/
             
             // Recomendação da microsoft pq o request por si so ja é único
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
