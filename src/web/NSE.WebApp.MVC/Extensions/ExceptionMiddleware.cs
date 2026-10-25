@@ -29,6 +29,10 @@ namespace NSE.WebApp.MVC.Extensions
             {
                 HandleRequestExceptionAsync(context, ex.StatusCode);
             }
+            catch (ApiException ex)
+            {
+                HandleRequestExceptionAsync(context, ex.StatusCode);
+            }
         }
 
         private static void HandleRequestExceptionAsync(HttpContext context,
