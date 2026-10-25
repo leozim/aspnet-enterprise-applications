@@ -30,12 +30,12 @@ namespace NSE.WebApp.MVC.Configuration
                 .AddTransientHttpErrorPolicy(p => 
                     p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 
-            /*services.AddHttpClient("Refit", options =>
+            services.AddHttpClient("Refit", options =>
                 {
                     options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
                 })
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);*/
+                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
             
             // Recomendação da microsoft pq o request por si so ja é único
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
