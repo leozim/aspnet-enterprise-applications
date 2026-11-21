@@ -13,6 +13,8 @@ namespace NSE.Core.DomainObjects
         public Cpf(string numero)
         {
             // thorw ex
+            if (!Validar(numero)) throw new DomainException("CPF inválido");
+            
             Numero = Numero;
         }
         
