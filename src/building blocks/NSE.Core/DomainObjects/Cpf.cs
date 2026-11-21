@@ -12,6 +12,7 @@ namespace NSE.Core.DomainObjects
 
         public Cpf(string numero)
         {
+            // thorw ex
             Numero = Numero;
         }
         
