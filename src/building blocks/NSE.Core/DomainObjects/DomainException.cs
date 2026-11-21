@@ -7,6 +7,8 @@ namespace NSE.Core.DomainObjects
         public DomainException() {  }
         
         public DomainException(string message) : base(message) {  }
-        public DomainException(string message, Exception InnnerException) : base(message, InnnerException) {  }
+        
+        public DomainException(string message, Exception InnnerException) 
+            : base(message, InnnerException) {  }
     }
 }
