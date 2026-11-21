@@ -10,6 +10,9 @@ namespace NSE.Cliente.API.Models
         public bool Excluido { get; private set; }
         public Endereco Endereco { get; set; }
 
+        // EF Relation
+        protected Cliente() { }
+        
         public Cliente(string nome, string email, string cpf)
         {
             Nome = nome;
