@@ -5,13 +5,19 @@ using NSE.Cliente.API.Models;
 using NSE.Core.Data;
 using NSE.Core.DomainObjects;
 using NSE.Core.Mediator;
+using NSE.Core.Messages;
 
 namespace NSE.Cliente.API.Data
 {
     public class ClientesContext : DbContext, IUnitOfWork
     {
         private readonly IMediatorHandler _mediatorHandler;
-        
+
+        protected ClientesContext(IMediatorHandler mediatorHandler)
+        {
+            _mediatorHandler = mediatorHandler;
+        }
+
         public ClientesContext(DbContextOptions<ClientesContext> options)
             : base(options)
         {
@@ -21,9 +27,11 @@ namespace NSE.Cliente.API.Data
 
         public DbSet<Models.Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<Event>();
+            
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                          e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                          property.SetColumnType("varchar(100)");

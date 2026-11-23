@@ -12,7 +12,7 @@ namespace NSE.Cliente.API.Data.Mappings
 
             builder.Property(c => c.Logradouro)
                 .IsRequired()
-                .HasColumnType("varchar(200");
+                .HasColumnType("varchar(200)");
 
             builder.Property(c => c.Numero)
                 .IsRequired()

@@ -28,7 +28,7 @@ namespace NSE.Cliente.API.Data.Mappings
                 tf.Property(c => c.Endereco)
                     .IsRequired()
                     .HasColumnName("Email")
-                    .HasColumnType($"varchar({Email.EnderecoMaxLength}");
+                    .HasColumnType($"varchar({Email.EnderecoMaxLength})");
             });
 
             builder.HasOne(c => c.Endereco)
